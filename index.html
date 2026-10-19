@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Món Quà 20/10 Đặc Biệt Cho Cục Zànggg ❤️</title>
+  <!-- Font chữ tiếng Việt mềm mại, sắc nét -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Thư viện bắn pháo giấy Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Liên kết CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas vẽ sao lấp lánh và mưa cánh hoa -->
+  <canvas id="particles"></canvas>
+
+  <!-- Nút bật/tắt nhạc góc phải trên -->
+  <button id="musicToggle" class="music-toggle" onclick="toggleMusic()" title="Bật/Tắt nhạc">
+    🎵 Nhạc: Bật
+  </button>
+
+  <!-- NHẠC NỀN MP3 DỰ PHÒNG -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/02/07/audio_1821099069.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ================= MÀN HÌNH 1: CÂU HỎI NÚT CHẠY TRỐN ================= -->
+  <div id="screenQuiz" class="screen">
+    <div class="cute-badge">✨ Cổng Bảo Mật Trái Tim ✨</div>
+    <h1 class="title-glow">Câu Hỏi Xác Minh Danh Tính 🕵️‍♂️</h1>
+    <p class="subtitle">
+      Trước khi zô phần chính hì mìn chơi 1 trò chơi trả lời nho nhỏ nhann:<br>
+      <b>Ai là công chúaa xinh đẹp, dịu dàng và đáng yêu nhứt thế giới hôm nayyyy?</b>
+    </p>
+
+    <div id="teaseMessage" class="tease-msg">Chọn đúng mới mở khóa được đóa nhann! 😘</div>
+
+    <div class="quiz-btn-group">
+      <button id="yesBtn" class="btn-yes" onclick="passQuiz()">Chắc chắn là cục zàng ời! 👑💖</button>
+      <button id="noBtn" class="btn-no">Một ai đóa khạc 🙈</button>
+    </div>
+  </div>
+
+  <!-- ================= MÀN HÌNH 2: TRẠM TRUYỀN HƠI ẤM (165 KM) ================= -->
+  <div id="screen1" class="screen hidden">
+    <div class="cute-badge">💖 Xác minh chuẩn 100% Người Iu Tuiii 💖</div>
+    <h1 class="title-glow">Trạm Truyền Hơi Ấm Từ Xa</h1>
+    <p class="subtitle">
+      Vì 20/10 đạt chưa thể vượt <b>165 km</b> đến ôm hăn trực típ...<br>
+      Hãy <b>nhấn và giữ</b> vào hai chú gấu bên dưới để kéo gần khoảng cách giữa chúng ta zề 0 km nhann!
+    </p>
+
+    <div class="hug-container">
+      <div id="pulseWave" class="pulse-wave"></div>
+      <svg class="progress-ring" width="230" height="230">
+        <circle stroke="rgba(255,255,255,0.15)" stroke-width="12" fill="transparent" r="100" cx="115" cy="115"/>
+        <circle id="progressCircle" class="progress-ring__circle" stroke="#ff4d79" stroke-width="12" stroke-linecap="round" fill="transparent" r="100" cx="115" cy="115"/>
+      </svg>
+
+      <!-- NÚT ÔM VỚI HÌNH VẼ 2 CHÚ GẤU CHIBI ĐÁNG YÊU SẮC NÉT -->
+      <button id="hugBtn" class="hug-btn" aria-label="Nhấn giữ để ôm">
+        <svg class="cute-bears-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Trái tim bay trên đầu 2 chú gấu -->
+          <path class="bear-top-heart" d="M100,45 C100,45 82,28 72,38 C62,48 75,65 100,78 C125,65 138,48 128,38 C118,28 100,45 100,45 Z" fill="#ff2a6d"/>
+          
+          <!-- Gấu Nâu (Bên trái) -->
+          <g class="bear-left">
+            <!-- Tai gấu nâu -->
+            <circle cx="52" cy="82" r="14" fill="#8d5524"/>
+            <circle cx="52" cy="82" r="7" fill="#c68642"/>
+            <circle cx="95" cy="76" r="13" fill="#8d5524"/>
+            <!-- Đầu & Thân gấu nâu -->
+            <ellipse cx="78" cy="150" rx="34" ry="38" fill="#a66a38"/>
+            <circle cx="76" cy="105" r="32" fill="#a66a38"/>
+            <!-- Má hồng & Mặt -->
+            <ellipse cx="82" cy="112" rx="12" ry="9" fill="#e0ac69"/>
+            <circle cx="64" cy="110" r="6" fill="#ff7597" opacity="0.75"/>
+            <!-- Mắt cười -->
+            <path d="M64,98 Q70,92 75,98" stroke="#3d2314" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="84" cy="108" r="3.5" fill="#3d2314"/>
+          </g>
+
+          <!-- Gấu Trắng Kem (Bên phải) -->
+          <g class="bear-right">
+            <!-- Tai gấu trắng -->
+            <circle cx="108" cy="76" r="13" fill="#fff0f5"/>
+            <circle cx="148" cy="82" r="14" fill="#fff0f5"/>
+            <circle cx="148" cy="82" r="7" fill="#ffb3c6"/>
+            <!-- Đầu & Thân gấu trắng -->
+            <ellipse cx="122" cy="150" rx="34" ry="38" fill="#fff9fb"/>
+            <circle cx="124" cy="105" r="32" fill="#fff9fb"/>
+            <!-- Má hồng & Mặt -->
+            <ellipse cx="118" cy="112" rx="12" ry="9" fill="#ffe5ec"/>
+            <circle cx="136" cy="110" r="6.5" fill="#ff4d79" opacity="0.8"/>
+            <!-- Mắt cười hạnh phúc -->
+            <path d="M125,98 Q130,92 136,98" stroke="#4a2535" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="116" cy="108" r="3.5" fill="#4a2535"/>
+          </g>
+
+          <!-- Vòng tay ôm chặt nhau ở giữa -->
+          <path d="M62,135 Q100,152 132,132" stroke="#8d5524" stroke-width="16" stroke-linecap="round" fill="none"/>
+          <path d="M138,142 Q100,162 68,142" stroke="#fff0f5" stroke-width="16" stroke-linecap="round" fill="none"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="hugWhisper" class="hug-whisper">Chạm và giữ vào 2 chú gấu ở trên nhé...</div>
+    <div id="statusText" class="status-text">Năng lượng cái ôm: 0%</div>
+    <div id="distanceText" class="distance-counter">📍 Khoảng cách hiện tại: 165 km</div>
+  </div>
+
+  <!-- ================= MÀN HÌNH 3: MỞ PHONG BÌ & THƯ NHẢY RA ================= -->
+  <div id="screen2" class="screen hidden">
+    <h1 class="title-glow">Đã Xóa Nhòa 165 km! ✨</h1>
+    <p id="envelopeHint" class="subtitle">Khoảng cách giờ chỉ còn là <b>0 km</b>.<br>Hăn hãy chạm vào phong bì bên dưới để xem điều bất ngờ nhoaaa!</p>
+
+    <!-- Phong bì có hiệu ứng rung & Lá thư nhảy vọt ra -->
+    <div id="envelopeWrapper" class="envelope-wrapper" onclick="openEnvelope()">
+      <div class="flap"></div>
+      <div class="pocket"></div>
+      <div class="seal">💖</div>
+      <div id="jumpingLetter" class="letter-preview">
+        <div class="mini-letter-decor">💌 Tâm Thư 20/10 💌</div>
+        <div class="mini-letter-sub">Gửi người tui thưnn...</div>
+        <div class="mini-hearts">❤️ 🌸 ❤️</div>
+      </div>
+    </div>
+
+    <!-- Nội dung thư bung ra sau khi nhảy -->
+    <div id="letterModal" class="letter-modal">
+      <div class="letter-header">Chúc Mừng 20/10 Công Chúa Của Tuii!</div>
+      <div class="letter-body-wrap">
+        <span id="typewriterText" class="letter-content"></span><span id="cursor" class="typing-cursor">|</span>
+      </div>
+      <button id="flowerBtn" class="btn-action" onclick="showBouquet()">Nhận Bó Hoa Của Tuii Nhannn 🌸</button>
+    </div>
+  </div>
+
+  <!-- ================= MÀN HÌNH 4: BÓ HOA NỞ RỘ SẮC NÉT ================= -->
+  <div id="screen3" class="screen hidden">
+    <h1 class="title-glow">Bó Hoa Hông Bao Giờ Tàn 💐</h1>
+    
+    <div class="bouquet-box">
+      <div class="glow-aura"></div>
+      <!-- Bó hoa Vector HD 320x320 -->
+      <svg class="flower-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wrapBack" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffb3c6"/>
+            <stop offset="100%" stop-color="#ff7597"/>
+          </linearGradient>
+          <linearGradient id="wrapFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff0f3"/>
+            <stop offset="100%" stop-color="#ffc2d1"/>
+          </linearGradient>
+          <radialGradient id="roseGrad1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffccd5"/>
+            <stop offset="45%" stop-color="#ff4d79"/>
+            <stop offset="100%" stop-color="#c9184a"/>
+          </radialGradient>
+          <radialGradient id="roseGrad2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff0f3"/>
+            <stop offset="50%" stop-color="#ff7597"/>
+            <stop offset="100%" stop-color="#e01e5a"/>
+          </radialGradient>
+        </defs>
+
+        <polygon points="45,110 150,45 255,110 215,245 85,245" fill="url(#wrapBack)" rx="15"/>
+        <ellipse cx="85" cy="105" rx="26" ry="48" transform="rotate(-32 85 105)" fill="#2b9348"/>
+        <ellipse cx="215" cy="105" rx="26" ry="48" transform="rotate(32 215 105)" fill="#2b9348"/>
+        <ellipse cx="120" cy="80" rx="22" ry="45" transform="rotate(-12 120 80)" fill="#55a630"/>
+        <ellipse cx="180" cy="80" rx="22" ry="45" transform="rotate(12 180 80)" fill="#55a630"/>
+
+        <circle cx="70" cy="80" r="6" fill="#fff"/><circle cx="82" cy="68" r="5" fill="#fff"/>
+        <circle cx="230" cy="80" r="6" fill="#fff"/><circle cx="218" cy="68" r="5" fill="#fff"/>
+        <circle cx="150" cy="48" r="6" fill="#fff"/><circle cx="135" cy="55" r="4.5" fill="#fff"/><circle cx="165" cy="55" r="4.5" fill="#fff"/>
+
+        <g transform="translate(95, 110)">
+          <circle cx="0" cy="0" r="34" fill="url(#roseGrad1)"/>
+          <circle cx="-8" cy="-6" r="22" fill="url(#roseGrad2)"/>
+          <circle cx="4" cy="4" r="14" fill="#ff8fa3"/>
+          <circle cx="0" cy="0" r="6" fill="#ffe066"/>
+        </g>
+
+        <g transform="translate(205, 110)">
+          <circle cx="0" cy="0" r="34" fill="url(#roseGrad1)"/>
+          <circle cx="8" cy="-6" r="22" fill="url(#roseGrad2)"/>
+          <circle cx="-4" cy="4" r="14" fill="#ff8fa3"/>
+          <circle cx="0" cy="0" r="6" fill="#ffe066"/>
+        </g>
+
+        <g transform="translate(120, 145)">
+          <circle cx="0" cy="0" r="30" fill="url(#roseGrad2)"/>
+          <circle cx="0" cy="0" r="18" fill="#ff4d79"/>
+          <circle cx="0" cy="0" r="6" fill="#ffe066"/>
+        </g>
+        <g transform="translate(180, 145)">
+          <circle cx="0" cy="0" r="30" fill="url(#roseGrad2)"/>
+          <circle cx="0" cy="0" r="18" fill="#ff4d79"/>
+          <circle cx="0" cy="0" r="6" fill="#ffe066"/>
+        </g>
+
+        <g transform="translate(150, 95)">
+          <circle cx="0" cy="0" r="42" fill="url(#roseGrad1)"/>
+          <circle cx="0" cy="-4" r="29" fill="url(#roseGrad2)"/>
+          <circle cx="0" cy="0" r="17" fill="#ff4d79"/>
+          <circle cx="0" cy="0" r="8" fill="#ffe066"/>
+        </g>
+
+        <polygon points="55,135 150,185 110,275 85,265" fill="#ffb3c6"/>
+        <polygon points="245,135 150,185 190,275 215,265" fill="#ffb3c6"/>
+        <polygon points="75,145 225,145 185,280 115,280" fill="url(#wrapFront)" stroke="#ff8fa3" stroke-width="3"/>
+
+        <path d="M115,235 C80,210 80,265 150,242 C220,265 220,210 185,235 Z" fill="#e01e5a"/>
+        <path d="M142,242 L120,288 L138,288 L150,252 Z" fill="#c9184a"/>
+        <path d="M158,242 L180,288 L162,288 L150,252 Z" fill="#c9184a"/>
+        <circle cx="150" cy="240" r="11" fill="#a4133c"/>
+        <circle cx="150" cy="240" r="5" fill="#ffccd5"/>
+      </svg>
+    </div>
+
+    <div class="final-wish">
+      "Dù ở xa làm đạt hông tặng qà cho hân đựt, nhưng trái tim tui hì luôn ở ngay cạnh hănn. Chúc cục zàng cụa tuii một ngày 20/10 thật nhìu niềm vui, lun xinh đẹp và là bông hoa rực rỡ nhứttt. Đợi ngày gần nhất mình gặp nhau, tui sẽ bù cho hân gấp đôi cái ôm hôm nay lunnn! Yêu hăn nhứtttt ❤️"
+    </div>
+
+    <button class="btn-confetti-more" onclick="fireCelebration()">Pháo Hoa Chúc Mừng 🎉</button>
+  </div>
+
+  <!-- Liên kết JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
